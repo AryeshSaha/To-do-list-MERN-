@@ -1,5 +1,5 @@
 const expressAsyncHandler = require("express-async-handler");
-const isValid = require("../../utils/isValid,js");
+const isValid = require("../../utils/isValid.js");
 const Users = require("../../models/UsersModel");
 
 const FetchMyPosts = expressAsyncHandler(async (req, res) => {

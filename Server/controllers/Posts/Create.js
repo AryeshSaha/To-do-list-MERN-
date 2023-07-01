@@ -1,6 +1,6 @@
 const expressAsyncHandler = require("express-async-handler");
 const Post = require("../../models/PostsModel");
-const isValid = require("../../utils/isValid,js");
+const isValid = require("../../utils/isValid.js");
 const Users = require("../../models/UsersModel");
 
 const CreatePosts = expressAsyncHandler(async (req, res) => {
