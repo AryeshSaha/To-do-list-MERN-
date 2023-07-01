@@ -4,7 +4,7 @@ const Input = ({ label, type, name, value, onChange }) => {
     <>
       <div className="mb-2">
         <label
-          htmlFor={type}
+          htmlFor={name}
           className="block text-sm font-semibold text-gray-800"
         >
           {label}

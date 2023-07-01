@@ -2,7 +2,7 @@ const Footer = () => {
   const year = new Date().getFullYear();
   return (
     <>
-      <footer className=" fixed bottom-3 w-full">
+      <footer className="bg-slate-900 fixed bottom-0 py-2 w-full">
         <p className="text-lg text-center text-white">Copyright &copy; Aryesh | {year}</p>
       </footer>
     </>

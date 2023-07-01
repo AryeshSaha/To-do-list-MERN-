@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Button from "../components/Button";
+import Button from "../components/Buttons/Button";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import FormikErr from "../Errors/FormikErr";
@@ -71,7 +71,7 @@ const Register = ({setShow}) => {
 
       <p className="mt-8 text-lg font-semibold text-center text-gray-700">
         Already have an account?
-        <button onClick={() => setShow(false)} className="text-lg text-rose-600 hover:underline">
+        <button onClick={() => setShow(false)} className="text-lg text-cyan-600 hover:underline">
           Sign in
         </button>
       </p>

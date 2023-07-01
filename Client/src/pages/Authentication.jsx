@@ -10,8 +10,9 @@ const Authentication = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (token) navigate("/my-posts");
+    if (token) navigate("/");
   }, [navigate]);
+
   return (
     <div className="relative flex flex-col justify-center min-h-screen overflow-hidden">
       <div className="w-full p-6 m-auto bg-white rounded-md shadow-2xl shadow-white lg:max-w-xl">

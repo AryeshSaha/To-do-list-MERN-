@@ -27,7 +27,7 @@ const useApi = () => {
     try {
       const { data } = await axios.post(REGISTER, input, config);
       localStorage.setItem("token", data.token);
-      navigate("/my-posts");
+      navigate("/");
       setOp({
         ...op,
         loading: false,
@@ -48,7 +48,7 @@ const useApi = () => {
     try {
       const { data } = await axios.post(LOGIN, input, config);
       localStorage.setItem("token", data.token);
-      navigate("/my-posts");
+      navigate("/");
       setOp({
         ...op,
         loading: false,

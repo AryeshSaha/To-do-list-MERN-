@@ -1,6 +1,6 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Button from "../components/Button";
+import Button from "../components/Buttons/Button";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import useApi from "../hooks/useApi";

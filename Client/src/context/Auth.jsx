@@ -8,6 +8,8 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState();
   const navigate = useNavigate();
 
+  const [dData, setDData] = useState([]);
+
   useEffect(() => {
     const token = localStorage.getItem("token");
     setUser(token);
@@ -15,12 +17,13 @@ const AuthProvider = ({ children }) => {
   }, [navigate]);
 
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, dData, setDData }}>
       {children}
     </AuthContext.Provider>
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export const useAuth = () => useContext(AuthContext);
 
 export default AuthProvider;
