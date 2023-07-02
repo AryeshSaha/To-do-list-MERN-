@@ -9,9 +9,7 @@ const DbCon = async () => {
       useNewUrlParser: true,
     });
   } catch (error) {
-    console.log("====================================");
     console.log(`Error: ${error.message}`);
-    console.log("====================================");
     process.exit();
   }
 };

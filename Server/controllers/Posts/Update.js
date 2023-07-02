@@ -12,6 +12,7 @@ const UpdatePosts = expressAsyncHandler(async (req, res) => {
   const post = await Post.findById(id);
 
   if (!post) throw new Error("Post does not exist!");
+  
   try {
     const post = await Post.findByIdAndUpdate(
       id,

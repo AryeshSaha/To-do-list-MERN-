@@ -3,24 +3,28 @@ import { useNavigate } from "react-router";
 import DeleteButton from "../components/Buttons/DeleteButton";
 import UpdateButton from "../components/Buttons/UpdateButton";
 import { useAuth } from "../context/Auth";
+import useApi from "../hooks/useApi";
 
 const ReadPost = ({ data }) => {
-  const { setDData } = useAuth();
+  const { setDData, fetchAgain, setFetchAgain } = useAuth();
+  const { Delete } = useApi()
   const nav = useNavigate();
 
   const updateHandler = () => {
-    nav(`/update/${data.title}`);
+    nav(`/update/${data._id}`);
   };
   const deleteHandler = () => {
-    setDData((d) => d.filter((i) => i.title !== data.title));
+    Delete({id: data._id})
+    setDData((dData) => dData.filter((i) => i._id !== data._id));
+    setFetchAgain(!fetchAgain);
   };
   return (
     <>
-      <div className="w-96 bg-slate-500 m-5 p-5 flex flex-col">
+      <div className="w-96 bg-slate-500 m-5 p-5 rounded-xl hover:shadow-xl hover:shadow-slate-400 hover:-translate-y-5 transition duration-500 ease-in-out flex flex-col">
         <div className="h-52 text-white">
-          <h4>{data.title}</h4>
+          <h4 className="h-10 text-xl">{data.title}</h4>
           <hr />
-          <p>{data.description}</p>
+          <p className="whitespace-pre-wrap mt-5">{data.description}</p>
         </div>
         <div>
           <UpdateButton label={"Update"} onClick={updateHandler} />

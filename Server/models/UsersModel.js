@@ -42,7 +42,7 @@ UsersModel.pre("save", async function (next) {
 
   // hash password with strength of 10
   const saltRounds = 10;
-  // vs code might suggest await is unneccessary so remoe it but then the hashing won't work(tried and tested)
+  // vs code might suggest await is unneccessary so remove it but then the hashing won't work(tried and tested)
   this.password = await bcrypt.hash(this.password, saltRounds);
   next();
 });

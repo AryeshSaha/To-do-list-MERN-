@@ -1,10 +1,10 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Button from "../components/Buttons/Button";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import FormikErr from "../Errors/FormikErr";
 import useApi from "../hooks/useApi";
+import DeleteButton from "../components/Buttons/DeleteButton";
 
 // form schema
 const formSchema = yup.object({
@@ -66,12 +66,12 @@ const Register = ({setShow}) => {
           touched={formik.touched.password}
           errors={formik.errors.password}
         />
-        <Button label={"Register"} />
+        <DeleteButton label={"Register"} />
       </form>
 
       <p className="mt-8 text-lg font-semibold text-center text-gray-700">
         Already have an account?
-        <button onClick={() => setShow(false)} className="text-lg text-cyan-600 hover:underline">
+        <button onClick={() => setShow(false)} className="text-lg text-blue-600 hover:underline">
           Sign in
         </button>
       </p>

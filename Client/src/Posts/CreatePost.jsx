@@ -6,6 +6,8 @@ import TextField from "../components/TextField";
 import { useAuth } from "../context/Auth";
 import * as yup from "yup";
 import { useFormik } from "formik";
+import useApi from "../hooks/useApi";
+import FormikErr from "../Errors/FormikErr";
 
 const formSchema = yup.object({
   title: yup.string().required("Title is required"),
@@ -14,7 +16,8 @@ const formSchema = yup.object({
 
 const CreatePost = () => {
   const nav = useNavigate();
-  const { setDData } = useAuth();
+  const { fetchAgain, setFetchAgain } = useAuth();
+  const { op, Create } = useApi();
 
   const formik = useFormik({
     initialValues: {
@@ -22,14 +25,9 @@ const CreatePost = () => {
       description: "",
     },
     onSubmit: ({ title, description }) => {
-      setDData((data) => [
-        ...data,
-        {
-          title,
-          description,
-        },
-      ]);
-      nav("/");
+      Create({ title, description });
+      setFetchAgain(!fetchAgain);
+      if (!op.loading) nav("/");
     },
     validationSchema: formSchema,
   });
@@ -38,7 +36,7 @@ const CreatePost = () => {
     <>
       <div className="fixed top-32 w-full flex flex-col justify-center overflow-hidden">
         <div className="w-full p-6 m-auto mb-20 bg-slate-200 rounded-md shadow-2xl shadow-slate-200 lg:max-w-xl">
-          <Heading label={"Create Another Post"} />
+          <Heading label={"Create A New Post"} />
           <form className="mt-6" onSubmit={formik.handleSubmit}>
             <Input
               label={"Title"}
@@ -47,12 +45,20 @@ const CreatePost = () => {
               value={formik.values.title}
               onChange={formik.handleChange}
             />
+            <FormikErr
+              touched={formik.touched.title}
+              errors={formik.errors.title}
+            />
             <TextField
               label={"Description"}
               name={"description"}
               rows={5}
               value={formik.values.description}
               onChange={formik.handleChange}
+            />
+            <FormikErr
+              touched={formik.touched.description}
+              errors={formik.errors.description}
             />
             <CreateButton label={"Create"} />
           </form>

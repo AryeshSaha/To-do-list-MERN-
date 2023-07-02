@@ -1,10 +1,10 @@
 import * as yup from "yup";
 import { useFormik } from "formik";
-import Button from "../components/Buttons/Button";
 import Heading from "../components/Heading";
 import Input from "../components/Input";
 import useApi from "../hooks/useApi";
 import FormikErr from "../Errors/FormikErr";
+import UpdateButton from "../components/Buttons/UpdateButton";
 
 // form schema
 const formSchema = yup.object({
@@ -13,7 +13,7 @@ const formSchema = yup.object({
 });
 
 // eslint-disable-next-line react/prop-types
-const Login = ({setShow}) => {
+const Login = ({ setShow }) => {
   const { Login } = useApi();
 
   const formik = useFormik({
@@ -21,7 +21,9 @@ const Login = ({setShow}) => {
       email: "",
       password: "",
     },
-    onSubmit: ({ email, password }) => Login({ email, password }),
+    onSubmit: ({ email, password }) => {
+      Login({ email, password });
+    },
     validationSchema: formSchema,
   });
 
@@ -37,8 +39,8 @@ const Login = ({setShow}) => {
           onChange={formik.handleChange("email")}
         />
         <FormikErr
-          touched={formik.touched.fullname}
-          errors={formik.errors.fullname}
+          touched={formik.touched.email}
+          errors={formik.errors.email}
         />
         <Input
           label={"Password"}
@@ -48,15 +50,18 @@ const Login = ({setShow}) => {
           onChange={formik.handleChange("password")}
         />
         <FormikErr
-          touched={formik.touched.fullname}
-          errors={formik.errors.fullname}
+          touched={formik.touched.password}
+          errors={formik.errors.password}
         />
-        <Button label={"Login"} />
+        <UpdateButton label={"Login"} />
       </form>
 
       <p className="mt-8 text-lg font-semibold text-center text-gray-700">
         Don&apos;t have an account?
-        <button onClick={() => setShow(true)} className="text-lg text-rose-600 hover:underline">
+        <button
+          onClick={() => setShow(true)}
+          className="text-lg text-red-600 hover:underline"
+        >
           Sign up
         </button>
       </p>
