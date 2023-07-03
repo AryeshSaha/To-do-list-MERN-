@@ -6,13 +6,13 @@ Vite: A fast, lightweight, and opinionated build tool for modern web development
 
 React: A popular JavaScript library for building user interfaces. React provides a component-based architecture and a virtual DOM for efficient rendering and managing state. It simplifies the process of building complex UIs and enables reusable and modular code.
 
-
 # Project Frontend Report:
 
 - Framework: React.js
 - Styling: Tailwind CSS
 
 # Used npm packages:
+
 1. react-router: A popular routing library for managing navigation and routing between different components in a React application.
 2. react-router-dom: A companion package for React Router that provides DOM-specific routing components, such as `BrowserRouter` and `Link`, for client-side routing.
 3. formik: A form management library for React that simplifies handling form state, validation, and submission.
@@ -23,6 +23,7 @@ React: A popular JavaScript library for building user interfaces. React provides
 8. postcss: A versatile CSS post-processing tool that enables transformations and optimizations of CSS code.
 
 # Implemented Features:
+
 1. Routing: Utilized react-router and react-router-dom to handle routing and navigation between different components and pages in the application.
 2. Form Management: Employed formik for simplified management of form state, validation, and submission.
 3. Validation: Integrated yup with formik to define and enforce validation rules for form inputs and data.

@@ -1,5 +1,7 @@
 <!-- Make sure to include a README file detailing your thought process and explaining how to run the project locally. -->
+
 # Run Client Side
+
 To create a project with Vite and React, you can follow these steps:
 
 1. Install Node.js: Ensure that you have Node.js installed on your machine. You can download and install it from the official Node.js website (https://nodejs.org).
@@ -23,6 +25,7 @@ To create a project with Vite and React, you can follow these steps:
 5. Open in Browser: Open your web browser and visit the address indicated in the previous step (e.g., `http://localhost:5173`). You should see the default Vite + React starter template.
 
 # Start Backend
+
 To create a project with Node and Express, you can follow these steps:
 
 1. Install Node.js: Ensure that you have Node.js installed on your machine. You can download and install it from the official Node.js website (https://nodejs.org).
@@ -31,12 +34,18 @@ To create a project with Node and Express, you can follow these steps:
 
    npm i
 
-3. Install the required packages using this command: 
+3. Install the required packages using this command:
 
-    npm i express express-async-handler nodemon mongoose bcrypt
+   npm i express express-async-handler nodemon mongoose bcrypt
 
-4. Start the backend using this command:
+4. Create a .env file in the root of the project and store the values of the following environment variables: 
 
-    nodemon
+   - JWT_KEY=secret key for creating a token with your id for example: jwtsecret,
+   - MONGO_URL=the link that mongodb atlas provides for connection with vs code to your cluster,
+   - PORT(optional)=4000,
 
-    This will start the Node development server and you should see a message indicating that the server is running and the project is available at a specific address (e.g., `http://localhost:4000`).
+5. Start the backend using this command:
+
+   nodemon
+
+   This will start the Node development server and you should see a message indicating that the server is running and the project is available at a specific address (e.g., `http://localhost:4000`).

@@ -1,9 +1,11 @@
 # Project Backend Report:
+
 - Framework: Express.js
 - Database: MongoDB Atlas
 - Deployment: Node.js
 
 # Used npm packages:
+
 1. express: A web framework for Node.js to build APIs and web applications.
 2. express-async-handler: A middleware to handle asynchronous route handlers in a simpler way.
 3. cors: A package enabling Cross-Origin Resource Sharing (CORS) for handling requests from different origins.
@@ -14,6 +16,7 @@
 8. mongoose: A MongoDB object modeling library for Node.js that provides an easy way to interact with the database.
 
 # Implemented Features:
+
 1. CRUD Operations: Created endpoints for performing Create, Read, Update, and Delete operations on the data models.
 2. Login and Registration: Implemented authentication and registration functionality using JSON Web Tokens (JWTs) and bcrypt for secure password hashing.
 3. Express Middleware: Utilized middleware like express-async-handler and cors for error handling and Cross-Origin Resource Sharing.
