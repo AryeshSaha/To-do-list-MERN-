@@ -6,7 +6,7 @@ const AuthHandler = require("../middlewares/Auth");
 const PostRoutes = require("express").Router();
 
 PostRoutes.route("/create").post(AuthHandler, CreatePosts);
-PostRoutes.route("/delete").put(AuthHandler, DeletePosts);
+PostRoutes.route("/delete").delete(AuthHandler, DeletePosts);
 PostRoutes.route("/update").put(AuthHandler, UpdatePosts);
 
 module.exports = PostRoutes;

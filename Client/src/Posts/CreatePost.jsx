@@ -8,6 +8,7 @@ import * as yup from "yup";
 import { useFormik } from "formik";
 import useApi from "../hooks/useApi";
 import FormikErr from "../Errors/FormikErr";
+import AppServerErr from "../Errors/AppServerErr";
 
 const formSchema = yup.object({
   title: yup.string().required("Title is required"),
@@ -60,6 +61,7 @@ const CreatePost = () => {
               touched={formik.touched.description}
               errors={formik.errors.description}
             />
+            <AppServerErr>{op.appErr && op.appErr}</AppServerErr>
             <CreateButton label={"Create"} />
           </form>
         </div>

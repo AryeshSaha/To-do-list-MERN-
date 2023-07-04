@@ -4,17 +4,18 @@ import DeleteButton from "../components/Buttons/DeleteButton";
 import UpdateButton from "../components/Buttons/UpdateButton";
 import { useAuth } from "../context/Auth";
 import useApi from "../hooks/useApi";
+import AppServerErr from "../Errors/AppServerErr";
 
 const ReadPost = ({ data }) => {
   const { setDData, fetchAgain, setFetchAgain } = useAuth();
-  const { Delete } = useApi()
+  const { Delete, op } = useApi();
   const nav = useNavigate();
 
   const updateHandler = () => {
     nav(`/update/${data._id}`);
   };
   const deleteHandler = () => {
-    Delete({id: data._id})
+    Delete({ id: data._id });
     setDData((dData) => dData.filter((i) => i._id !== data._id));
     setFetchAgain(!fetchAgain);
   };
@@ -26,6 +27,7 @@ const ReadPost = ({ data }) => {
           <hr />
           <p className="whitespace-pre-wrap mt-5">{data.description}</p>
         </div>
+        <AppServerErr>{op.appErr && op.appErr}</AppServerErr>
         <div>
           <UpdateButton label={"Update"} onClick={updateHandler} />
           <DeleteButton label={"Delete"} onClick={deleteHandler} />

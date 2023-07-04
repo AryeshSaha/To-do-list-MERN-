@@ -112,7 +112,7 @@ const useApi = () => {
       });
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
@@ -128,14 +128,13 @@ const useApi = () => {
     try {
       const { data } = await axios.get(MYPOSTS, postConfig);
       setDData(data.Posts);
-      // console.log("all my posts: ", data);
       setOp({
         ...op,
         loading: false,
       });
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
@@ -149,7 +148,13 @@ const useApi = () => {
     });
 
     try {
-      const { data } = await axios.put(DELETEPOST, input, postConfig);
+      const { data } = await axios.request({
+        url:DELETEPOST,
+        method: 'delete',
+        data: input,
+        // there is no key for config variables that is why i had to spread the variable
+        ...postConfig,
+      });
       setOp({
         ...op,
         loading: false,
@@ -157,7 +162,7 @@ const useApi = () => {
       return data;
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
@@ -179,7 +184,7 @@ const useApi = () => {
       return data;
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
