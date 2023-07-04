@@ -5,6 +5,7 @@ import Input from "../components/Input";
 import FormikErr from "../Errors/FormikErr";
 import useApi from "../hooks/useApi";
 import DeleteButton from "../components/Buttons/DeleteButton";
+import AppServerErr from "../Errors/AppServerErr";
 
 // form schema
 const formSchema = yup.object({
@@ -14,8 +15,8 @@ const formSchema = yup.object({
 });
 
 // eslint-disable-next-line react/prop-types
-const Register = ({setShow}) => {
-  const { Register } = useApi();
+const Register = ({ setShow }) => {
+  const { Register, op } = useApi();
 
   const formik = useFormik({
     initialValues: {
@@ -32,6 +33,9 @@ const Register = ({setShow}) => {
   return (
     <>
       <Heading label={"Sign up"} />
+      <AppServerErr>
+        {op.serverErr === "Network Error" ? op.serverErr : null}
+      </AppServerErr>
       <form className="mt-6" onSubmit={formik.handleSubmit}>
         <Input
           label={"Fullname"}
@@ -55,6 +59,10 @@ const Register = ({setShow}) => {
           touched={formik.touched.email}
           errors={formik.errors.email}
         />
+        <AppServerErr>
+          {op.appErr === "Email already exists, try with a different one" &&
+            op.appErr}
+        </AppServerErr>
         <Input
           label={"Password"}
           type={"password"}
@@ -71,7 +79,10 @@ const Register = ({setShow}) => {
 
       <p className="mt-8 text-lg font-semibold text-center text-gray-700">
         Already have an account?
-        <button onClick={() => setShow(false)} className="text-lg text-blue-600 hover:underline">
+        <button
+          onClick={() => setShow(false)}
+          className="text-lg text-blue-600 hover:underline"
+        >
           Sign in
         </button>
       </p>

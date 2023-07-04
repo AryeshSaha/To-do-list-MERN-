@@ -5,6 +5,7 @@ import Input from "../components/Input";
 import useApi from "../hooks/useApi";
 import FormikErr from "../Errors/FormikErr";
 import UpdateButton from "../components/Buttons/UpdateButton";
+import AppServerErr from "../Errors/AppServerErr";
 
 // form schema
 const formSchema = yup.object({
@@ -14,7 +15,7 @@ const formSchema = yup.object({
 
 // eslint-disable-next-line react/prop-types
 const Login = ({ setShow }) => {
-  const { Login } = useApi();
+  const { Login, op } = useApi();
 
   const formik = useFormik({
     initialValues: {
@@ -30,6 +31,9 @@ const Login = ({ setShow }) => {
   return (
     <>
       <Heading label={"Sign in"} />
+      <AppServerErr>
+        {op.serverErr === "Network Error" ? op.serverErr : null}
+      </AppServerErr>
       <form className="mt-6" onSubmit={formik.handleSubmit}>
         <Input
           label={"Email"}
@@ -42,6 +46,9 @@ const Login = ({ setShow }) => {
           touched={formik.touched.email}
           errors={formik.errors.email}
         />
+        <AppServerErr>
+          {op.appErr === "Email does not exist" && op.appErr}
+        </AppServerErr>
         <Input
           label={"Password"}
           type={"password"}
@@ -53,6 +60,9 @@ const Login = ({ setShow }) => {
           touched={formik.touched.password}
           errors={formik.errors.password}
         />
+        <AppServerErr>
+          {op.appErr === "Invalid Password" && op.appErr}
+        </AppServerErr>
         <UpdateButton label={"Login"} />
       </form>
 

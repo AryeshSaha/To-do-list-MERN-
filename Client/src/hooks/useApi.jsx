@@ -37,14 +37,14 @@ const useApi = () => {
     try {
       const { data } = await axios.post(REGISTER, input, config);
       localStorage.setItem("token", data.token);
-      navigate("/");
       setOp({
         ...op,
         loading: false,
       });
+      navigate("/");
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
@@ -58,14 +58,14 @@ const useApi = () => {
     try {
       const { data } = await axios.post(LOGIN, input, config);
       localStorage.setItem("token", data.token);
-      navigate("/");
       setOp({
         ...op,
         loading: false,
       });
+      navigate("/");
     } catch (error) {
       setOp({
-        ...op,
+        loading: false,
         appErr: error?.response?.data?.message,
         serverErr: error?.message,
       });
@@ -86,8 +86,8 @@ const useApi = () => {
       setOp({
         ...op,
         loading: false,
+        appErr: error,
       });
-      // console.log("Logout error: ", error);
     }
   };
 
@@ -184,7 +184,7 @@ const useApi = () => {
         serverErr: error?.message,
       });
     }
-  }
+  };
 
   return {
     Register,

@@ -19,7 +19,7 @@ const LoginCtrl = expressAsyncHandler(async (req, res) => {
       message: "Login Successful",
     });
   } else {
-    res.status(404);
+    res.status(500);
     throw new Error("Invalid Password");
   }
 });
