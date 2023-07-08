@@ -7,6 +7,7 @@ import useApi from "../hooks/useApi";
 import AppServerErr from "../Errors/AppServerErr";
 
 const ReadPost = ({ data }) => {
+
   const { setDData, fetchAgain, setFetchAgain } = useAuth();
   const { Delete, op } = useApi();
   const nav = useNavigate();
@@ -22,10 +23,12 @@ const ReadPost = ({ data }) => {
   return (
     <>
       <div className="w-96 bg-slate-500 m-5 p-5 rounded-xl hover:shadow-xl hover:shadow-slate-400 hover:-translate-y-5 transition duration-500 ease-in-out flex flex-col">
-        <div className="h-52 text-white">
+        <div className="h-56 text-white">
           <h4 className="h-10 text-xl">{data.title}</h4>
           <hr />
-          <p className="whitespace-pre-wrap mt-5">{data.description}</p>
+          <div className="overflow-auto h-48 scrollBar" >
+            <p className="whitespace-pre-wrap mt-5">{data.description}</p>
+          </div>
         </div>
         <AppServerErr>{op.appErr && op.appErr}</AppServerErr>
         <div>

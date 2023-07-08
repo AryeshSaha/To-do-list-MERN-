@@ -1,5 +1,8 @@
-// base url
-export const BASE_URL = "http://127.0.0.1:4000";
+// local base url
+// export const BASE_URL = "http://127.0.0.1:4000";
+
+// cloud base url
+export const BASE_URL = "https://aryeshsaha-to-do-list.onrender.com";
 
 // auth urls
 export const REGISTER = `${BASE_URL}/api/user/`; // register user api endpoint
