@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   return (
-    <div className="h-14 flex items-center bg-slate-100">
+    <div className="h-14 flex items-center bg-slate-100 sticky top-0 z-20">
       <div className="flex-grow ms-10 ps-16">
         <Heading label={"my posts"} size={3} />
       </div>
